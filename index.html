@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock Paper Scissor</title>
+</head>
+<body>
+    <script>
+        function computerPlay(){
+        let selection = ['rock','paper','scissors'];
+        return selection[Math.floor(random(0,3))]
+        function random(mn, mx) {
+            return Math.random() * (mx - mn) + mn;
+        }
+        }
+
+        function playRound(computerSelection,playerSelection){
+            playerSelectionLower = playerSelection.toLowerCase()
+            switch (computerSelection) {
+                case 'rock':
+                    if (playerSelectionLower == 'scissors') {
+                        return console.log('Computer wins! Rock beats scissors!');
+                    } else if (playerSelectionLower == 'paper'){
+                        return console.log('You win! Paper beats Rock!');
+                    } else {
+                        return console.log('Tie! Try again!');
+                    }
+                    break;
+                case 'scissors':
+                    if (playerSelectionLower == 'rock') {
+                            return console.log('You win! Rock beats scissors!');
+                        } else if (playerSelectionLower == 'paper'){
+                            return console.log('You lose! scissors beats paper!');
+                        } else {
+                            return console.log('Tie! Try again!');
+                        }
+                    break;
+                case 'paper':
+                    if (playerSelectionLower == 'rock') {
+                            return console.log('Computer wins! Paper beats rock!');
+                        } else if (playerSelectionLower == 'scissors'){
+                            return console.log('You win! Scissors beats paper!');
+                        } else {
+                            return console.log('Tie! Try again!');
+                        }
+                    break;
+            }
+            return
+        }
+
+        for (let i = 0; i < 3; i++) {
+            playerSelection = prompt('Rock, paper, or scissors?')
+            playRound(computerPlay(),playerSelection)
+        }
+    </script>
+</body>
+</html>

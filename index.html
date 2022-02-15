@@ -4,9 +4,16 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>Rock Paper Scissor</title>
 </head>
 <body>
+    <div class="results" style=""></div>
+    <div class="container" style="">
+        <img src="/img/rock.png" class="selection"  id="rock" style="height: auto; width: 100px; padding: 20px;">
+        <img src="/img/paper.png" class="selection" id="paper" style="height: auto; width: 100px; padding: 20px;">
+        <img src="/img/scissors.png" class="selection" id="scissors" style="height: auto; width: 100px; padding: 20px;">
+    </div>
     <script>
         function computerPlay(){
         let selection = ['rock','paper','scissors'];
@@ -16,44 +23,49 @@
         }
         }
 
-        function playRound(computerSelection,playerSelection){
+        function playRound(playerSelection){
             playerSelectionLower = playerSelection.toLowerCase()
-            switch (computerSelection) {
+            let score = 0;
+            switch (computerPlay()) {
                 case 'rock':
                     if (playerSelectionLower == 'scissors') {
-                        return console.log('Computer wins! Rock beats scissors!');
+                        return 'Computer wins! Rock beats scissors!';
                     } else if (playerSelectionLower == 'paper'){
-                        return console.log('You win! Paper beats Rock!');
+                        return 'You win! Paper beats Rock!';
                     } else {
-                        return console.log('Tie! Try again!');
+                        return 'Tie! Try again!'
                     }
                     break;
                 case 'scissors':
                     if (playerSelectionLower == 'rock') {
-                            return console.log('You win! Rock beats scissors!');
+                            return 'You win! Rock beats scissors!';
                         } else if (playerSelectionLower == 'paper'){
-                            return console.log('You lose! scissors beats paper!');
+                            return 'You lose! scissors beats paper!';
                         } else {
-                            return console.log('Tie! Try again!');
+                            return 'Tie! Try again!';
                         }
                     break;
                 case 'paper':
                     if (playerSelectionLower == 'rock') {
-                            return console.log('Computer wins! Paper beats rock!');
+                            return 'Computer wins! Paper beats rock!';
                         } else if (playerSelectionLower == 'scissors'){
-                            return console.log('You win! Scissors beats paper!');
+                            return 'You win! Scissors beats paper!';
                         } else {
-                            return console.log('Tie! Try again!');
+                            return 'Tie! Try again!';
                         }
                     break;
             }
             return
         }
 
-        for (let i = 0; i < 3; i++) {
-            playerSelection = prompt('Rock, paper, or scissors?')
-            playRound(computerPlay(),playerSelection)
-        }
+        const img = document.querySelectorAll('.selection');
+        let results = document.querySelector('.results')
+
+        img.forEach(img => img.addEventListener('click', function () {
+            results.textContent = `${playRound(img.id)}`;
+        }));
+
+
     </script>
 </body>
 </html>
